@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 html , body{
@@ -53,7 +54,7 @@ nav h3{
 
 .page1 span{
     color: white;
-    font-weight: 100;
+    font-weight: 200;
     font-size: 20vw;
     display: inline-block;
 }
@@ -86,6 +87,7 @@ nav h3{
 .cursor h2{
     /* height: 100%;
     width: 100%; */
+    font-weight: 400;
     color: rgba(0, 0, 0, 0.859);
     font-size: 2vh;
 }
@@ -125,7 +127,7 @@ nav h3{
 }
 
 .page2-content-text h1{
-    font-weight: 100;
+    font-weight: 500;
     font-size: 5vw;
     width: 96%;
     padding-bottom: 10px;
@@ -209,11 +211,11 @@ img{
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 150px;
+    gap: 5vh;
 }
 
 .page4-card{
-    gap: 10px;
+    gap: 30px;
     padding: 20px;
     height: 23vh;
     display: flex;
@@ -221,14 +223,14 @@ img{
 }
 
 .page4-card h1{
-    width: 50%;
+    width: 60%;
     font-size: 2vw;
     border-bottom: 1px solid black;
     padding-bottom: 10px;
 }
 .card-text{
     width: 70%;
-    font-size: 1.8vw;
+    font-size: 18px;
 }
 
 .page4 img{
@@ -259,7 +261,7 @@ img{
 
 .loader h3{
     font-size: 3vw;
-    font-weight: 100;
+    font-weight: 500;
 }
 
 .page5{

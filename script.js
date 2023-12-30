@@ -112,6 +112,10 @@ function page2animation() {
 page2animation();
 
 
+
+
+
+
 var tl = gsap.timeline();
 tl.from(".loader  h3",{
     x:40,

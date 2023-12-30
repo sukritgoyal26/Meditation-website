@@ -261,3 +261,31 @@ img{
     font-size: 3vw;
     font-weight: 100;
 }
+
+.page5{
+    background-color: black;
+    height: 20vh;
+}
+
+footer{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.left{
+    color: #FAF8F3;
+}
+
+.right{
+    color: #FAF8F3;
+}
+
+.right h1{
+    font-size:2vh ;
+}
+.right a{
+    color: #FAF8F3;
+    text-decoration: none;
+}

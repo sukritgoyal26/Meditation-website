@@ -1,3 +1,28 @@
+function gsapAndST() {
+    gsap.registerPlugin(ScrollTrigger);
+
+// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector(".main"),
+  smooth: true
+});
+locoScroll.on("scroll", ScrollTrigger.update);
+ScrollTrigger.scrollerProxy(".main", {
+  scrollTop(value) {
+    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+  }, 
+  getBoundingClientRect() {
+    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+  },
+  pinType: document.querySelector(".main").style.transform ? "transform" : "fixed"
+});
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+ScrollTrigger.refresh();
+}
+gsapAndST();
+
+
 function forpage1() {
     
 var content = document.querySelector(".page1-content");
@@ -53,27 +78,64 @@ content.addEventListener("click",()=>{
 }
 forpage1();
 
-
-function gsapAndST() {
-    gsap.registerPlugin(ScrollTrigger);
-
-// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
-
-const locoScroll = new LocomotiveScroll({
-  el: document.querySelector(".main"),
-  smooth: true
-});
-locoScroll.on("scroll", ScrollTrigger.update);
-ScrollTrigger.scrollerProxy(".main", {
-  scrollTop(value) {
-    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
-  }, 
-  getBoundingClientRect() {
-    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
-  },
-  pinType: document.querySelector(".main").style.transform ? "transform" : "fixed"
-});
-ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
-ScrollTrigger.refresh();
+function page2animation() {
+    gsap.from(".page2-content-text p ",{
+        y:120,
+        opacity:0,
+        stagger:0.2,
+        duration:1,
+        scrollTrigger:{
+            trigger:".page2",
+            scroller:".main",
+            start:"top 30%",
+            end:"top 27%",
+            // markers:true,
+            scrub:2
+        }
+    })
+    gsap.from(".page2-content-img img",{
+        x:120,
+        opacity:0,
+        stagger:0.2,
+        duration:1,
+        scrollTrigger:{
+            trigger:".page2",
+            scroller:".main",
+            start:"top 25%",
+            end:"top 23%",
+            // markers:true,
+            scrub:2
+        }
+    })
 }
-gsapAndST();
+
+page2animation();
+
+
+var tl = gsap.timeline();
+tl.from(".loader  h3",{
+    x:40,
+    opacity:0,
+    duration:1,
+    stagger:0.1
+})
+tl.to(".loader  h3",{
+    x:-40,
+    opacity:0,
+    duration:1,
+    stagger:0.1
+})
+
+tl.to(".loader",{
+    opacity:0
+})
+
+tl.to(".loader",{
+    display:"none"
+})
+tl.from(".page1-content h1 span",{
+    y:100,
+    opacity:0,
+    stagger:0.12,
+    // delay:0.5
+})

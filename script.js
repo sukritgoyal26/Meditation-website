@@ -34,12 +34,12 @@ content.addEventListener("click",()=>{
         newdiv.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/lh4JdZTJe7k?si=5xzzCKGEP61Ewr0w" title="YouTube video player" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
         content.append(newdiv);
         document.getElementById('cur').innerHTML="<h2>click to close</h2>";
-        // document.getElementById('mainvid').pause();
+        document.getElementById('mainvid').pause();
         document.getElementById('mainvid').style.opacity=0.5;
     }
     else{
         document.getElementById('mainvid').style.opacity=0.8;
-        // document.getElementById('mainvid').play();
+        document.getElementById('mainvid').play();
         document.getElementById('cur').innerHTML="<h2>MEDITATE NOW</h2>";
         content.removeChild(contains);
     }
@@ -52,3 +52,28 @@ content.addEventListener("click",()=>{
     
 }
 forpage1();
+
+
+function gsapAndST() {
+    gsap.registerPlugin(ScrollTrigger);
+
+// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector(".main"),
+  smooth: true
+});
+locoScroll.on("scroll", ScrollTrigger.update);
+ScrollTrigger.scrollerProxy(".main", {
+  scrollTop(value) {
+    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+  }, 
+  getBoundingClientRect() {
+    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+  },
+  pinType: document.querySelector(".main").style.transform ? "transform" : "fixed"
+});
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+ScrollTrigger.refresh();
+}
+gsapAndST();

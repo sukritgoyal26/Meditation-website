@@ -111,7 +111,38 @@ function page2animation() {
 
 page2animation();
 
+function page4Animation() {
+    gsap.from(".page4-card ",{
+        y:120,
+        opacity:0,
+        stagger:0.3,
+        duration:1,
+        scrollTrigger:{
+            trigger:".page4",
+            scroller:".main",
+            start:"top 40%",
+            end:"top 37%",
+            // markers:true,
+            scrub:3
+        }
+    })
+    gsap.from(".page4-card p",{
+        y:120,
+        opacity:0,
+        stagger:0.3,
+        duration:1,
+        scrollTrigger:{
+            trigger:".page4",
+            scroller:".main",
+            start:"top 40%",
+            end:"top 37%",
+            // markers:true,
+            scrub:3
+        }
+    })
+}
 
+page4Animation();
 
 
 
